@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <title>{% block title %} {% endblock title %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    {% load staticfiles %}
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{% static 'css/bootstrap.min.css' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/cssFiles/open-iconic-bootstrap.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/cssFiles/animate.css' %}" />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/cssFiles/owl.carousel.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/cssFiles/owl.theme.default.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/cssFiles/magnific-popup.css' %}"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/cssFiles/aos.css' %}" />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'meroJodi/fonts/ionicons/css/ionicons.min.css' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'meroJodi/fonts/flaticon/font/flaticon.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/cssFiles/icomoon.css' %}" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/cssFiles/style.css' %}" />
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jsFiles/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jsFiles/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'js/jsFiles/popper.min.js' %}"></script>
+    <script src="{% static 'js/jsFiles/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'js/jsFiles/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jsFiles/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jsFiles/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jsFiles/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jsFiles/aos.js' %}"></script>
+    <script src="{% static 'js/jsFiles/jquery.animateNumber.min.js' %}"></script>
+    <script src="{% static 'js/jsFiles/scrollax.min.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{% static 'js/jsFiles/google-map.js' %}"></script>
+    <script src="{% static 'js/jsFiles/main.js' %}"></script>
+  </body>
+</html>

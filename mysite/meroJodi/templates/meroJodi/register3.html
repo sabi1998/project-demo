@@ -1,0 +1,115 @@
+{% extends "meroJodi/headerTwo.html" %} {% load static %} {% block title %}
+MeroJodi Registration Form {% endblock title %} 
+{% block styling %}
+<link rel="stylesheet" href="{% static 'meroJodi/css/style.css' %}" /> 
+{% endblock styling %} 
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center login-container">
+  <div class="author d-flex">
+    <div class="image align-self-center">
+      <img
+        src="{% static 'meroJodi/images/meroJodi.png' %}"
+        alt=""
+        width="65%"
+        height="%"
+      />
+    </div>
+    <form class="login-form text-center" action="{% url 'firstpage' %}">
+      <h2 class="mb-5 font-weight-light text-uppercase">EDUCATION DETAILS</h2>
+      <div class="form-group">
+        <label for="sel6">Your Education Level</label>
+        <select class="form-control rounded-pill form-control-lg" id="sel6">
+          <option>Association Degree</option>
+          <option>Bachelors</option>
+          <option>Diploma</option>
+          <option>High School</option>
+          <option>Honours Degree</option>
+          <option>Trade School</option>
+          <option>Undergraduate</option>
+          <option>Masters</option>
+
+          <option>Less than high School</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="sel7">Your education Field</label>
+        <select class="form-control rounded-pill form-control-lg" id="sel7">
+          <option>Administrative Service</option>
+          <option>Architecture</option>
+          <option>Armed Forces</option>
+          <option>Arts</option>
+          <option>Computers/IT</option>
+          <option>Commerce</option>
+          <option>Engineering/Technology</option>
+          <option>Education</option>
+          <option>Fashion</option>
+          <option>Finance</option>
+          <option>Fine Arts</option>
+          <option>Health Sciences/Nursing</option>
+          <option>Law</option>
+          <option>Management</option>
+          <option>Marketing/Advertising</option>
+          <option>Medicine</option>
+          <option>Music</option>
+          <option>Office Administration</option>
+          <option>Science</option>
+          <option>Shipping</option>
+          <option>Travel & Tourism</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your College Name</label>
+        <input
+          type="text"
+          class="form-control rounded-pill form-control-lg"
+          placeholder="Enter Your College Name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="sel8">You work with</label>
+        <select class="form-control rounded-pill form-control-lg" id="sel8">
+          <option>Business/Self Employed</option>
+          <option>Civil Services</option>
+          <option>Government/Public Sector</option>
+          <option>Private Company</option>
+          <option>Not Working</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="sel9">Your Monthly Income</label>
+        <select class="form-control rounded-pill form-control-lg" id="sel9">
+          <option>> 5000</option>
+          <option>> 15000</option>
+          <option>> 25000</option>
+          <option>> 40000</option>
+          <option>> 60000</option>
+          <option>> 1Lakh</option>
+          <option>> 3Lakh</option>
+          <option>> 5Lakh</option>
+          <option>> 8Lakh</option>
+          <option>> 12Lakh</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="income"
+          >You may choose not to show your income to others</label
+        >
+      </div>
+      <div
+        class="forgot-link form-group d-flex justify-content-between align-items-center"
+      ></div>
+      <button
+        type="submit"
+        class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase"
+      >
+        Next
+      </button>
+    </form>
+  </div>
+
+  {% endblock %}
+</div>
