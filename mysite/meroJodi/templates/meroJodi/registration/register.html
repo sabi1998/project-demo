@@ -1,4 +1,4 @@
-{% extends "meroJodi/headerTwo.html" %}{% load static %} {% block title %}
+{% extends "meroJodi/registration/headerTwo.html" %}{% load static %} {% block title %}
 MeroJodi Registration Form {% endblock title %} {% block styling %}
 <link rel="stylesheet" href="{% static 'meroJodi/css/loginStyle.css' %}" />
 {% endblock styling %} {% block content %}
@@ -13,13 +13,19 @@ MeroJodi Registration Form {% endblock title %} {% block styling %}
         height="%"
       />
     </div>
-    <form class="login-form text-center" action="{% url 'register_two' %}">
+    <form
+      class="login-form text-center"
+      action=""
+      role="form"
+      method="post">
+       {% csrf_token %}
       <h1 class="mb-5 font-weight-light text-uppercase">Register</h1>
       <div class="form-group">
         <input
           type="text"
           class="form-control rounded-pill form-control-lg"
           placeholder="Enter your email"
+          name="email"
         />
       </div>
       <div class="form-group">
@@ -27,6 +33,7 @@ MeroJodi Registration Form {% endblock title %} {% block styling %}
           type="text"
           class="form-control rounded-pill form-control-lg"
           placeholder="Enter mobile number"
+          name="mobileno"
         />
       </div>
       <div class="form-group">
@@ -34,6 +41,7 @@ MeroJodi Registration Form {% endblock title %} {% block styling %}
           type="password"
           class="form-control rounded-pill form-control-lg"
           placeholder="Enter password"
+          name="password"
         />
       </div>
       <div class="form-group">
@@ -41,13 +49,14 @@ MeroJodi Registration Form {% endblock title %} {% block styling %}
           type="password"
           class="form-control rounded-pill form-control-lg"
           placeholder="Confirm password"
+          name="confirmPassword"
         />
       </div>
       <div
         class="forgot-link form-group d-flex justify-content-between align-items-center"
       >
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="remember" />
+          <input type="checkbox" class="form-check-input" id="remember" name="rememberMe"/>
           <label class="form-check-label" for="remember"
             >Remember Password</label
           >

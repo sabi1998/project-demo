@@ -1,9 +1,7 @@
-{% extends "meroJodi/headerTwo.html" %} {% load static %} {% block title %}
-MeroJodi Registration Form {% endblock title %} 
-{% block styling %}
-<link rel="stylesheet" href="{% static 'meroJodi/css/style.css' %}" /> 
-{% endblock styling %} 
-{% block content %}
+{% extends "meroJodi/registration/headerTwo.html" %} {% load static %} 
+{% block title %} MeroJodi Registration Form {% endblock title %} {% block styling %}
+<link rel="stylesheet" href="{% static 'meroJodi/css/style.css' %}" />
+{% endblock styling %} {% block content %}
 
 <div class="d-flex justify-content-center align-items-center login-container">
   <div class="author d-flex">
@@ -15,7 +13,8 @@ MeroJodi Registration Form {% endblock title %}
         height="%"
       />
     </div>
-    <form class="login-form text-center" action="{% url 'firstpage' %}">
+    <form class="login-form text-center" action="" method="POST">
+      {% csrf_token %}
       <h2 class="mb-5 font-weight-light text-uppercase">EDUCATION DETAILS</h2>
       <div class="form-group">
         <label for="sel6">Your Education Level</label>
@@ -28,7 +27,6 @@ MeroJodi Registration Form {% endblock title %}
           <option>Trade School</option>
           <option>Undergraduate</option>
           <option>Masters</option>
-
           <option>Less than high School</option>
         </select>
       </div>

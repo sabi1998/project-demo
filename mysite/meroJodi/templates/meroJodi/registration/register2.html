@@ -1,13 +1,6 @@
-{% extends "meroJodi/headerTwo.html" %} 
- {% load static %}
-{% block title %} MeroJodi Registration Form
-{% endblock title %} 
-{% block styling %}
-<link rel="stylesheet" href="{% static 'meroJodi/css/style.css' %}" /> 
-{% endblock styling %} 
-
-
-{% block content %}
+{% extends "meroJodi/registration/headerTwo.html" %} {% load static %} {% block title %} MeroJodi Registration Form {% endblock title %} {% block styling %}
+<link rel="stylesheet" href="{% static 'meroJodi/css/style.css' %}" />
+{% endblock styling %} {% block content %}
 
 <div class="d-flex justify-content-center align-items-center login-container">
   <div class="author d-flex">
@@ -19,13 +12,19 @@
         height="%"
       />
     </div>
-    <form class="login-form text-center" action="{% url 'register_three' %}">
+    <form
+      class="login-form text-center"
+      action=""
+      method="POST"
+    >
+      {% csrf_token %}
       <h2 class="mb-5 font-weight-light text-uppercase">Create your Profile</h2>
       <div class="form-group">
         <input
           type="text"
           class="form-control rounded-pill form-control-lg"
           placeholder="Your Hometown"
+          name="hometown"
         />
       </div>
       <div class="form-group">
@@ -33,6 +32,7 @@
           type="text"
           class="form-control rounded-pill form-control-lg"
           placeholder="City you live in"
+          name="city"
         />
       </div>
       <div class="form-group">
@@ -40,26 +40,39 @@
           type="text"
           class="form-control rounded-pill form-control-lg"
           placeholder="Country you live in"
+          name="country"
         />
       </div>
       <div class="form-group">
         <label for="sel1">You live with your family?</label>
-        <select class="form-control rounded-pill form-control-lg" id="sel1">
+        <select
+          class="form-control rounded-pill form-control-lg"
+          id="sel1"
+          name="liveWithFamily"
+        >
           <option>Yes</option>
           <option>No</option>
         </select>
       </div>
       <div class="form-group">
         <label for="sel2">Martial status</label>
-        <select class="form-control rounded-pill form-control-lg" id="sel2">
-          <option>Never Married</option>
+        <select
+          class="form-control rounded-pill form-control-lg"
+          id="sel2"
+          name="maritalStatus"
+        >
+          <option>Single</option>
           <option>Divorced</option>
           <option>Widowed</option>
         </select>
       </div>
       <div class="form-group">
         <label for="sel3">Your Diet</label>
-        <select class="form-control rounded-pill form-control-lg" id="sel3">
+        <select
+          class="form-control rounded-pill form-control-lg"
+          id="sel3"
+          name="diet"
+        >
           <option>Veg</option>
           <option>Non-Veg</option>
           <option>Occasionally Non-Veg</option>
@@ -68,7 +81,11 @@
       </div>
       <div class="form-group">
         <label for="sel4">Your height</label>
-        <select class="form-control rounded-pill form-control-lg" id="sel4">
+        <select
+          class="form-control rounded-pill form-control-lg"
+          id="sel4"
+          name="height"
+        >
           <option>4'0"-4'3"</option>
           <option>4'4"-4'7"</option>
           <option>4'8"-4'11"</option>
@@ -82,7 +99,11 @@
       </div>
       <div class="form-group">
         <label for="sel5">Your caste</label>
-        <select class="form-control rounded-pill form-control-lg" id="sel5">
+        <select
+          class="form-control rounded-pill form-control-lg"
+          id="sel5"
+          name="caste"
+        >
           <option>Others/Undefined</option>
           <option>Foreigners</option>
           <option>Amat</option>
@@ -134,80 +155,80 @@
           <option>Jirel</option>
           <option>Kami</option>
           <option>Kalwar</option>
-          <option>Kanu/Haluwai</option
-          ><option>Kathabaniyan</option
-          ><option>Kewat</option>
-          <option>Khatwe</option
-          ><option>Koiri/Kushwaha</option
-          ><option>Kumal</option>
+          <option>Kanu/Haluwai</option>
+          <option>Kathabaniyan</option>
+          <option>Kewat</option>
+          <option>Khatwe</option>
+          <option>Koiri/Kushwaha</option>
+          <option>Kumal</option>
           <option>Kurmi</option>
-          <option>Kahar</option
-          ><option>Kayastha</option>
-          <option>Kulung</option
-          ><option>Kumhar</option>
-          <option>Koche</option
-          ><option>Kamar</option>
-          <option>Kisan</option
-          ><option>Khaling</option
-          ><option>Kusunda</option>
-          <option>Kalar</option
-          ><option>Kori</option>
+          <option>Kahar</option>
+          <option>Kayastha</option>
+          <option>Kulung</option>
+          <option>Kumhar</option>
+          <option>Koche</option>
+          <option>Kamar</option>
+          <option>Kisan</option>
+          <option>Khaling</option>
+          <option>Kusunda</option>
+          <option>Kalar</option>
+          <option>Kori</option>
           <option>Khawas</option>
-          <option>Lodh</option
-          ><option>Lohar</option>
+          <option>Lodh</option>
+          <option>Lohar</option>
           <option>Limbu</option>
-          <option>Lepcha</option
-          ><option>Lhomi</option>
-          <option>Lhopa</option
-          ><option>Lohorung</option>
+          <option>Lepcha</option>
+          <option>Lhomi</option>
+          <option>Lhopa</option>
+          <option>Lohorung</option>
           <option>Magar</option>
-          <option>Musahar</option
-          ><option>Mallaha</option>
-          <option>Majhi</option
-          ><option>Mewahang</option
-          ><option>Munda</option>
-          <option>Meche</option
-          ><option>Mali</option
-          ><option>Marwadi</option>
-          <option>Nuniya</option
-          ><option>Newar</option>
+          <option>Musahar</option>
+          <option>Mallaha</option>
+          <option>Majhi</option>
+          <option>Mewahang</option>
+          <option>Munda</option>
+          <option>Meche</option>
+          <option>Mali</option>
+          <option>Marwadi</option>
+          <option>Nuniya</option>
+          <option>Newar</option>
           <option>Nachhring</option>
-          <option>Natuwa</option
-          ><option>Nurang</option>
+          <option>Natuwa</option>
+          <option>Nurang</option>
           <option>Pathakatta/Kushwadia</option>
-          <option>Punjabi</option
-          ><option>Pahari</option>
-          <option>Raji</option
-          ><option>Rajput/Terai Kshetriya</option>
+          <option>Punjabi</option>
+          <option>Pahari</option>
+          <option>Raji</option>
+          <option>Rajput/Terai Kshetriya</option>
           <option>Rajdhob</option>
-          <option>Rajbhar</option
-          ><option>Rai</option>
-          <option>Raute</option
-          ><option>Rajbanshi</option>
-          <option>Sudhi</option
-          ><option>Sarki</option>
-          <option>Sherpa</option
-          ><option>Sanyasi/Dasnami</option>
+          <option>Rajbhar</option>
+          <option>Rai</option>
+          <option>Raute</option>
+          <option>Rajbanshi</option>
+          <option>Sudhi</option>
+          <option>Sarki</option>
+          <option>Sherpa</option>
+          <option>Sanyasi/Dasnami</option>
           <option>Sunwar</option>
           <option>Sonar</option>
           <option>Santhal</option>
-          <option>Sampang</option
-          ><option>Sarabaria</option>
-          <option>Thakali</option
-          ><option>Thami</option>
+          <option>Sampang</option>
+          <option>Sarabaria</option>
+          <option>Thakali</option>
+          <option>Thami</option>
           <option>Tatma/Tatwa</option>
           <option>Teli</option>
-          <option>Tamang</option
-          ><option>Thakuri</option
-          ><option>Tharu</option>
+          <option>Tamang</option>
+          <option>Thakuri</option>
+          <option>Tharu</option>
           <option>Thakur/Hajam</option>
-          <option>Topkegola</option
-          ><option>Thulung</option
-          ><option>Tajpuriya</option>
-          <option>Walung</option
-          ><option>Yamphu</option>
-          <option>Yadav</option
-          ><option>Yakkha</option>
+          <option>Topkegola</option>
+          <option>Thulung</option>
+          <option>Tajpuriya</option>
+          <option>Walung</option>
+          <option>Yamphu</option>
+          <option>Yadav</option>
+          <option>Yakkha</option>
         </select>
       </div>
 
