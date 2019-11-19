@@ -8,6 +8,8 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
+from django.views.generic import View
+from django.views.generic.edit import CreateView, UpdateView
 
 # Create your views here.
 
@@ -38,76 +40,46 @@ def login_view(request):
 
 
 # @csrf_protect
-def register_view(request):
-    if request.method == 'POST':
-        form1 = ProfileRegisterFormOne(request.POST)
-        print("request is post ", request.method)
-        if form1.is_valid():
-            print("form1 is valid")
-            register = form1.save(commit=False)
-            # print("register", register.save())
-            return register_two_view(request)
-            # register.save()
-            # register.save()
+class RegisterView(CreateView):
+    template_name = "register.html"
 
-            # return HttpResponseRedirect(reverse('register_two'))
-        else:
-            print("form1 isnot valid")
-            print(form1.errors)
+    def post(self, request):
+        form = ProfileRegisterFormOne(request.POST)
+        print(form.as_table)
+        if form.is_valid():
+            form.save()
+            return redirect('register_two')
+        return render(request, template_name, {'form': form})
 
-    else:
-        print("request is not post")
-        form1 = ProfileRegisterFormOne()
-
-    return render(request, "meroJodi/registration/register.html", {'form1': form1})
+    def get(self, request):
+        form = ProfileRegisterFormOne()
+        return render(request, 'register.html', {'form': form})
 
 
-def register_two_view(request):
-    if request.method == 'POST':
-        form2 = ProfileRegisterFormTwo(request.POST)
-        form1 = ProfileRegisterFormOne(request.POST)
-        print("request is post ", request.method)
-        if form2.is_valid():
-            print("form2 is valid")
-            register2 = form2.save(commit=False)
-            return register_three_view(request)
-            # form1.save()
-            # register2.save()
-            # return HttpResponseRedirect(reverse('firstpage'))
-        else:
-            print("form2 isnot valid")
-            print(form2.errors)
-    else:
-        form2 = ProfileRegisterFormTwo()
-        form1 = ProfileRegisterFormOne()
-        print(form2.errors)
-        print("form2 not a post request")
-    return render(request, "meroJodi/registration/register2.html", {'form2': form2})
+class RegisterViewTwo(UpdateView):
+    def post(self, request):
+        form = ProfileRegisterFormTwo(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('register_three')
+        return render(request, 'register_two.html', {'form': form})
+
+    def get(self, request):
+        form = ProfileRegisterFormTwo()
+        return render(request, 'register_two.html', {'form': form})
 
 
-def register_three_view(request):
-    if request.method == 'POST':
-        form3 = ProfileRegisterFormThree(request.POST)
-        form2 = ProfileRegisterFormTwo(request.POST)
-        form1 = ProfileRegisterFormOne(request.POST)
-        if form3.is_valid() and form2.is_valid() and form1.is_valid():
-            register3 = form3.save(commit=False)
-            register3.save()
-            form2.save()
-            form1.save()
-            return HttpResponseRedirect(reverse('firstpage'))
-        else:
-            print("form3 isnot valid")
-            print(form3.errors)
-    else:
+class RegisterViewThree(UpdateView):
+    def post(self, request):
+        form = ProfileRegisterFormThree(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('firstpage')
+        return render(request, 'register_three.html', {'form': form})
+
+    def get(self, request):
         form = ProfileRegisterFormThree()
-        print("not a post request in form3")
-    return render(request, "meroJodi/registration/register3.html", {'form3': form3})
-
-
-# def registration(form):
-#     print("registration")
-
+        return render(request, 'register_three.html', {'form': form})
     # ======> Registration End <==========
 
 
